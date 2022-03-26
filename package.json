@@ -1,0 +1,16 @@
+{
+  "name": "wikidata",
+  "version": "1.0.0",
+  "description": "",
+  "main": "get64Data.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "jsdom": "^19.0.0"
+  }
+}
