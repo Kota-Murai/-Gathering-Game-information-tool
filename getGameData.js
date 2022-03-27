@@ -8,7 +8,7 @@ const gameInfo = require('./gameInfo');
 /**
  * メイン関数
  */
-(async function main() {
+(function main() {
     // ゲームデータ取得処理開始
     getGameData(gameInfo.FamicomInfo);
     getGameData(gameInfo.N64Info);
