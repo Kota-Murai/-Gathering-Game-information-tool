@@ -68,24 +68,24 @@ async function getFamicomGameData(gameInfo, wikiTextLines) {
             // 発売日を生成.
             const releaseDate = releaseYear + Date;
             // ソフト名を取得.
-            const softName = wikiTextLines[idx + 1];
+            const softTitle = wikiTextLines[idx + 1];
             // 発売元を取得.
             const salesCompany = wikiTextLines[idx + 2];
             // UIに表示する画像のURLを取得.
-            const imgURL = await getImgURL(softName, gameInfo.consoleTypeforSerach, salesCompany);
+            const imgURL = await getImgURL(softTitle, gameInfo.consoleTypeforSerach, salesCompany);
             
             // csvファイルへ書き出す情報を生成
             if (null === writeFileText) {
                 primaryKey_id++;
-                writeFileText = `${primaryKey_id}, ${softName}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}\n`
+                writeFileText = `${primaryKey_id}, ${softTitle}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}, , \n`
                 // 進行状況が分かるように一応ログ出し.
-                console.log(`${primaryKey_id}, ${softName}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}`);
+                console.log(`${primaryKey_id}, ${softTitle}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}`);
             }
             else{
                 primaryKey_id++;
-                writeFileText += `${primaryKey_id}, ${softName}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}\n`
+                writeFileText += `${primaryKey_id}, ${softTitle}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}, , \n`
                 // 進行状況が分かるように一応ログ出し.
-                console.log(`${primaryKey_id}, ${softName}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}`);
+                console.log(`${primaryKey_id}, ${softTitle}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}`);
             }
         }
     }
@@ -122,35 +122,35 @@ async function get64GameData(gameInfo, wikiTextLines) {
             // // 発売日を生成.
             // const releaseDate = releaseYear + Date;
             // // ソフト名を取得.
-            // const softName = text.slice(Date.length + 1, text.search(/（/));
+            // const softTitle = text.slice(Date.length + 1, text.search(/（/));
             // // 発売元を取得.
             // const salesCompany = text.slice(text.search(/（/) + 1, text.search(/）/));
             // // UIに表示する画像のURLを取得.
-            // const imgURL = await getImgURL(softName, gameInfo.consoleTypeforSerach, salesCompany);
+            // const imgURL = await getImgURL(softTitle, gameInfo.consoleTypeforSerach, salesCompany);
 
             // 日付を取得.
             const Date = text.match(/[0-9]{1,2}月[0-9]{1,2}日/)[0];
             // 発売日を生成.
             const releaseDate = releaseYear + Date;
             // ソフト名を取得.
-            const softName = wikiTextLines[idx + 1];
+            const softTitle = wikiTextLines[idx + 1];
             // 発売元を取得.
             const salesCompany = wikiTextLines[idx + 2];
             // UIに表示する画像のURLを取得.
-            const imgURL = await getImgURL(softName, gameInfo.consoleTypeforSerach, salesCompany);
+            const imgURL = await getImgURL(softTitle, gameInfo.consoleTypeforSerach, salesCompany);
 
             // csvファイルへ書き出す情報を生成
             if (null === writeFileText) {
                 primaryKey_id++;
-                writeFileText = `${primaryKey_id}, ${softName}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}\n`
+                writeFileText = `${primaryKey_id}, ${softTitle}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}, , \n`
                 // 進行状況が分かるように一応ログ出し.
-                console.log(`${primaryKey_id}, ${softName}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}`);
+                console.log(`${primaryKey_id}, ${softTitle}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}`);
             }
             else{
                 primaryKey_id++;
-                writeFileText += `${primaryKey_id}, ${softName}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}\n`
+                writeFileText += `${primaryKey_id}, ${softTitle}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}, , \n`
                 // 進行状況が分かるように一応ログ出し.
-                console.log(`${primaryKey_id}, ${softName}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}`);
+                console.log(`${primaryKey_id}, ${softTitle}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}`);
             }
         }
     }
@@ -162,26 +162,26 @@ async function get64GameData(gameInfo, wikiTextLines) {
 
 // 画像URL取得関数.
 // T.B.D 画像URLがNULLだった時の再起処理は今後の検討.
-async function getImgURL(softName, consoleType, salesCompany ,count=0){
-    const orgSoftName = softName;
+async function getImgURL(softTitle, consoleType, salesCompany ,count=0){
+    const orgsoftTitle = softTitle;
     const orgsalesCompany = salesCompany;
 
-    softName = softName.replace('\'', '')
-    softName = encodeURIComponent(softName)
+    softTitle = softTitle.replace('\'', '')
+    softTitle = encodeURIComponent(softTitle)
     salesCompany = encodeURIComponent(salesCompany)
     let url = null;
 
     if (0 == count) {
-        url = `https://search.rakuten.co.jp/search/mall/"${softName}" "${consoleType}" "${salesCompany}"/101205/?s=12`
+        url = `https://search.rakuten.co.jp/search/mall/"${softTitle}" "${consoleType}" "${salesCompany}"/101205/?s=12`
     }
     else if (1 == count) {
-        url = `https://search.rakuten.co.jp/search/mall/${softName} ${consoleType} ${salesCompany}/101205/?s=12`
+        url = `https://search.rakuten.co.jp/search/mall/${softTitle} ${consoleType} ${salesCompany}/101205/?s=12`
     }
     else if (2 == count) {
-        url = `https://search.rakuten.co.jp/search/mall/"${softName}"/101205/?s=12`
+        url = `https://search.rakuten.co.jp/search/mall/"${softTitle}"/101205/?s=12`
     }
     else if (3 == count) {
-        url = `https://search.rakuten.co.jp/search/mall/${softName}/101205/?s=12`
+        url = `https://search.rakuten.co.jp/search/mall/${softTitle}/101205/?s=12`
     }
     
     const res = await axios.get(url);
@@ -195,7 +195,7 @@ async function getImgURL(softName, consoleType, salesCompany ,count=0){
     catch(e){
         if (3 > count) {
             count++;
-            result = await getImgURL(orgSoftName, consoleType, orgsalesCompany, count);
+            result = await getImgURL(orgsoftTitle, consoleType, orgsalesCompany, count);
             if (result !== undefined && result !== null) {
                 return result;
             }
