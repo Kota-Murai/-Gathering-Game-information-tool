@@ -77,15 +77,15 @@ async function getFamicomGameData(gameInfo, wikiTextLines) {
             // csvファイルへ書き出す情報を生成
             if (null === writeFileText) {
                 primaryKey_id++;
-                writeFileText = `${primaryKey_id}, ${softTitle}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}, , \n`
+                writeFileText = `${primaryKey_id},${softTitle},${salesCompany},${gameInfo.consoleType},${releaseDate},${imgURL},,\n`
                 // 進行状況が分かるように一応ログ出し.
-                console.log(`${primaryKey_id}, ${softTitle}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}`);
+                console.log(`${primaryKey_id},${softTitle},${salesCompany},${gameInfo.consoleType},${releaseDate},${imgURL}`);
             }
             else{
                 primaryKey_id++;
-                writeFileText += `${primaryKey_id}, ${softTitle}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}, , \n`
+                writeFileText += `${primaryKey_id},${softTitle},${salesCompany},${gameInfo.consoleType},${releaseDate},${imgURL},,\n`
                 // 進行状況が分かるように一応ログ出し.
-                console.log(`${primaryKey_id}, ${softTitle}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}`);
+                console.log(`${primaryKey_id},${softTitle},${salesCompany},${gameInfo.consoleType},${releaseDate},${imgURL}`);
             }
         }
     }
@@ -142,15 +142,15 @@ async function get64GameData(gameInfo, wikiTextLines) {
             // csvファイルへ書き出す情報を生成
             if (null === writeFileText) {
                 primaryKey_id++;
-                writeFileText = `${primaryKey_id}, ${softTitle}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}, , \n`
+                writeFileText = `${primaryKey_id},${softTitle},${salesCompany},${gameInfo.consoleType},${releaseDate},${imgURL},,\n`
                 // 進行状況が分かるように一応ログ出し.
-                console.log(`${primaryKey_id}, ${softTitle}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}`);
+                console.log(`${primaryKey_id},${softTitle},${salesCompany},${gameInfo.consoleType},${releaseDate},${imgURL}`);
             }
             else{
                 primaryKey_id++;
-                writeFileText += `${primaryKey_id}, ${softTitle}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}, , \n`
+                writeFileText += `${primaryKey_id},${softTitle},${salesCompany},${gameInfo.consoleType},${releaseDate},${imgURL},,\n`
                 // 進行状況が分かるように一応ログ出し.
-                console.log(`${primaryKey_id}, ${softTitle}, ${salesCompany}, ${gameInfo.consoleType}, ${releaseDate}, ${imgURL}`);
+                console.log(`${primaryKey_id},${softTitle},${salesCompany},${gameInfo.consoleType},${releaseDate},${imgURL}`);
             }
         }
     }
